@@ -35,9 +35,6 @@ The application should now be running at `http://localhost:3000`
     git clone https://github.com/pallabidas22/Mortgage-Banking-repo
     cd faker
     
-    # or
-    cd foodiedelight\faker
-
     ```
 2. Install dependencies
     ```sh
