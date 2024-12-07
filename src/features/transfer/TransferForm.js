@@ -7,14 +7,14 @@
 import React from "react";
 import { Form, Input, Button, message, Layout } from "antd";
 import TextArea from "antd/es/input/TextArea";
-const { Content } = Layout;
 
-import "../../styles/TransferForm.css";
 import { useTranferForm } from "../../hooks/useTranferForm";
 import { initialTransferForm, LIMITS } from "../../utils/utils";
 import { handleFormValidation } from "../../utils/validations";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../../styles/TransferForm.css";
+const { Content } = Layout;
 
 const TransferForm = ({
   savingAccountNum = "1234567890",
