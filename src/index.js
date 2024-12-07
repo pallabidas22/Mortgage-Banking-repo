@@ -5,9 +5,11 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Spin } from "antd";
 import "./index.css";
 import AccountHistory from "./features/history/account/AccountHistory";
-import { AuthProvider }  from "./contexts/authContext";
+import { AuthProvider } from "./contexts/authContext";
 
 import "./index.css";
+import TransferForm from "./features/transfer/TransferForm";
+import SuccessTransfer from "./features/transfer/SuccessTransfer";
 const TransferHistory = lazy(() => import("./pages/TransferHistory"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const Login = lazy(() => import("./features/login/signIn"));
@@ -73,6 +75,22 @@ const appRouter = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/mortgage-transfer",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <TransferForm />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/success-transfer",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <SuccessTransfer />
+      </Suspense>
+    ),
   },
 ]);
 

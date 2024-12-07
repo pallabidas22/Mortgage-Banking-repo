@@ -30,6 +30,12 @@ const LandingPage = () => {
         case "TransferHistory":
           navigate("/transfer/history");
           break;
+        case "MortgageTransfer":
+          navigate("/mortgage-transfer");
+          break;
+        case "TransferSuccess":
+          navigate("/success-transfer");
+          break;
         case "Logout":
           //   LOGOUT
           break;
@@ -63,6 +69,16 @@ const LandingPage = () => {
       key: "TransferHistory",
       icon: <ProfileOutlined />,
       label: "Transfer History",
+    },
+    {
+      key: "MortgageTransfer",
+      icon: <ProfileOutlined />,
+      label: "Mortgage Fund Transfer",
+    },
+    {
+      key: "TransferSuccess",
+      icon: <ProfileOutlined />,
+      label: "Transfer Success",
     },
     {
       key: "Logout",
