@@ -78,7 +78,7 @@ const LandingPage = () => {
                   }}
                   data-testid="header-title"
                 >
-                  UOB Baning - <span>Mortgage</span>
+                  UOB Banking - <span>Mortgage</span>
                 </h1>
               </Flex>
               {/* USER */}
