@@ -5,10 +5,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Spin } from "antd";
 import "./index.css";
 import AccountHistory from "./features/history/account/AccountHistory";
-import { AuthProvider }  from "./contexts/authContext";
+import { AuthProvider } from "./contexts/authContext";
 
 import "./index.css";
-const TransferHistory = lazy(() => import("./pages/TransferHistory"));
+import AccountHistoryLayout from "./features/history/account/AccountHistoryLayout";
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const Login = lazy(() => import("./features/login/signIn"));
 
@@ -17,7 +17,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const appRouter = createBrowserRouter([
   {
-    path: "/login",
+    path: "/",
     element: (
       <Suspense fallback={<Loading />}>
         <Login /> {/* SignIn Component : */}
@@ -25,7 +25,7 @@ const appRouter = createBrowserRouter([
     ),
   },
   {
-    path: "/",
+    path: "/login",
     element: (
       <Suspense fallback={<Loading />}>
         <Login /> {/* SignIn Component : */}
@@ -41,16 +41,10 @@ const appRouter = createBrowserRouter([
     ),
     children: [
       {
-        path: "profile",
-        element: (
-          <Suspense fallback={<Loading />}>{/* UserProfile  */}</Suspense>
-        ),
-      },
-      {
         path: "history",
         element: (
           <Suspense fallback={<Loading />}>
-            <AccountHistory />
+            <AccountHistoryLayout />
           </Suspense>
         ),
       },
