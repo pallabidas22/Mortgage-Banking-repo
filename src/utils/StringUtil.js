@@ -4,6 +4,6 @@
  * @param text - The string whose first letter will be capitalized.
  * @returns A new string with the first letter capitalized.
  */
-export const initCap = (text: string): string => {
+export const initCap = (text) => {
   return text.replace(/^\w/, (c) => c.toUpperCase());
 };

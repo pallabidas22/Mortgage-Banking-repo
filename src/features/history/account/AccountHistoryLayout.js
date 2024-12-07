@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
 
 import { PageHeader } from "../../../ui/PageHeader";
+import { HistoryList } from "./HistoryList";
 
-const AccountHistory = () => {
+const AccountHistoryLayout = () => {
   return (
     <div>
       {/* Page header for navigation and title */}
@@ -12,9 +13,10 @@ const AccountHistory = () => {
       <main>
         {/* Renders nested routes */}
         <Outlet />
+        <HistoryList />
       </main>
     </div>
   );
 };
 
-export default AccountHistory;
+export default AccountHistoryLayout;

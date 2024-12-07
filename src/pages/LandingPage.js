@@ -1,16 +1,13 @@
 import { useCallback } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
-import { ConfigProvider, Flex, Layout, Menu, Popconfirm, theme } from "antd";
-import {
-  ProfileOutlined,
-  LogoutOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { ConfigProvider, Flex, Layout, Menu, theme } from "antd";
+import { useMenuConfig } from "../hooks/useMenuConfig";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const { menuItems, themeTokens } = useMenuConfig();
 
   const handleMenuClick = useCallback(
     (e) => {
@@ -37,50 +34,6 @@ const LandingPage = () => {
     },
     [navigate]
   );
-
-  const {
-    token: { colorBgContainer, borderRadiusLG, colorTextHeading }, // Extract theme tokens
-  } = theme.useToken();
-
-  const menuItems = [
-    { key: "UserProfile", icon: <UserOutlined />, label: "Profile" },
-    {
-      key: "AccountSummary",
-      icon: <ProfileOutlined />,
-      label: "Account Summary",
-    },
-    {
-      key: "AccountHistory",
-      icon: <ProfileOutlined />,
-      label: "Account History",
-    },
-    {
-      key: "Transfer",
-      icon: <ProfileOutlined />,
-      label: "Fund Transfer",
-    },
-    {
-      key: "TransferHistory",
-      icon: <ProfileOutlined />,
-      label: "Transfer History",
-    },
-    {
-      key: "Logout",
-      icon: <LogoutOutlined />,
-      label: (
-        <Popconfirm
-          placement="bottom"
-          title="Are you sure to logout ?"
-          description="Logout"
-          okText="Yes"
-          cancelText="No"
-          onConfirm={() => navigate("/login")}
-        >
-          Logout
-        </Popconfirm>
-      ),
-    },
-  ];
 
   return (
     <ConfigProvider theme={{ algorithm: theme.defaultAlgorithm }}>
@@ -111,7 +64,7 @@ const LandingPage = () => {
         <Layout>
           <Header
             className="logo-header"
-            style={{ background: colorBgContainer }}
+            style={{ background: themeTokens.colorBgContainer }}
             data-testid="header"
           >
             <Flex justify="space-between">
@@ -119,7 +72,10 @@ const LandingPage = () => {
                 {/* LOGO */}
                 <h1
                   className="logo-header-h1"
-                  style={{ color: colorTextHeading }}
+                  style={{
+                    color: themeTokens.colorTextHeading,
+                    margin: "8px;",
+                  }}
                   data-testid="header-title"
                 >
                   UOB Baning - <span>Mortgage</span>
@@ -136,8 +92,8 @@ const LandingPage = () => {
               style={{
                 padding: 24,
                 height: "100%",
-                background: colorBgContainer,
-                borderRadius: borderRadiusLG,
+                background: themeTokens.colorBgContainer,
+                borderRadius: themeTokens.borderRadiusLG,
               }}
               data-testid="content-wrapper"
             >
