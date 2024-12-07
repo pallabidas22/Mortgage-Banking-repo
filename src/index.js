@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import ReactDOM from 'react-dom/client';
+import ReactDOM from "react-dom/client";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Spin } from "antd";
@@ -8,7 +8,7 @@ const TransferHistory = lazy(() => import('./pages/TransferHistory'));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 
 const Loading = () => <Spin size="default" fullscreen />;
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const appRouter = createBrowserRouter([
   {
@@ -42,4 +42,3 @@ root.render(
     <RouterProvider router={appRouter} />
   </React.StrictMode>
 );
-
