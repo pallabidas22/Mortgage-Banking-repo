@@ -1,0 +1,61 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.transfer-form {
+  background-color: white;
+
+  .ant-input,
+  .ant-input-number,
+  .ant-textarea {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    /* height: 50px; */
+  }
+
+  /* .ant-btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+  } */
+}
+
+.form-button-container {
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .btn-submit {
+    background-color: green;
+    color: white;
+  }
+  .btn-reset {
+    background-color: red;
+    color: white;
+    margin-left: 10px;
+  }
+}
+
+.success-container {
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-text {
+  color: green;
+  font-size: 20px;
+}
+.btn-goback {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
