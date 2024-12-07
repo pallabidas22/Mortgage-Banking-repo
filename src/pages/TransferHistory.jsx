@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Spin, Table } from 'antd';
+import { Modal, Spin, Table } from 'antd';
 import { API } from "../constants/api";
 import useFetch from "../hooks/useFetch";
 import { columns } from '../features/history/transfer/columns';
@@ -10,7 +10,7 @@ const TransferHistory = () => {
   const [request, setRequest] = useState(1);
   const { loading, data, error } = useFetch(API.TRANSFER_HISTORY, request);
   const [displayData, setDisplayData] = useState([]);
-
+  
   useEffect(() => {
     if (data?.length) {
       if (request === 1) {
@@ -23,6 +23,15 @@ const TransferHistory = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
+  useEffect(() => {
+    if(error) {
+      Modal.error({
+        title: 'Something went wrong',
+        content: 'Please try again',
+      });
+    }
+  }, [error])
+
 
   const handleScroll = (el) => {
     const { scrollTop, scrollHeight, clientHeight } = el.target;
@@ -32,7 +41,6 @@ const TransferHistory = () => {
     }
   }
 
-  if (error) throw new Error(error);
   if (loading && request === 1) return <Spin size="default" fullscreen data-testid="loading" />;
 
   return (
