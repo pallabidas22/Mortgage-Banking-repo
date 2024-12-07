@@ -11,7 +11,7 @@ In the project directory, you can run:
 
 1. Clone the repository
     ```sh
-    git clone https://github.com/pimohan/foodiedelight.git](https://github.com/pallabidas22/Mortgage-Banking-repo
+    git clone https://github.com/pallabidas22/Mortgage-Banking-repo
     ```
 2. Install dependencies
     ```sh
@@ -32,7 +32,7 @@ The application should now be running at `http://localhost:3000`
 
 1. Clone the repository
     ```sh
-    git clone https://github.com/pimohan/foodiedelight.git](https://github.com/pallabidas22/Mortgage-Banking-repo
+    git clone https://github.com/pallabidas22/Mortgage-Banking-repo
     cd faker
     
     # or
