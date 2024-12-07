@@ -22,13 +22,13 @@ const LandingPage = () => {
           navigate("/accounts");
           break;
         case "AccountHistory":
-          navigate("/account-history");
+          navigate("/accounts/history");
           break;
         case "Transfer":
           navigate("/transfer");
           break;
         case "TransferHistory":
-          navigate("/transfer-history");
+          navigate("/transfer/history");
           break;
         case "Logout":
           //   LOGOUT

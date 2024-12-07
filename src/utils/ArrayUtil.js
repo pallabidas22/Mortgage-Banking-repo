@@ -9,10 +9,10 @@ import { initCap } from "./StringUtil";
  * @returns A new array with the specified element removed and the remaining elements optionally capitalized.
  */
 export const removeElement = (
-  array: string[],
-  elementToRemove: string | undefined,
+  array,
+  elementToRemove,
   canElementsUpperCase = true
-): string[] => {
+) => {
   // Filter out the element to remove from the array
   const elements = [...array.filter((item) => item !== elementToRemove)];
 

@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Spin } from "antd";
 import "./index.css";
+import AccountHistory from "./features/history/account/AccountHistory";
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 
@@ -26,6 +27,30 @@ const appRouter = createBrowserRouter([
         <LandingPage /> {/* SignIn Component : */}
       </Suspense>
     ),
+  },
+  {
+    path: "/accounts",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <LandingPage />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: "profile",
+        element: (
+          <Suspense fallback={<Loading />}>{/* UserProfile  */}</Suspense>
+        ),
+      },
+      {
+        path: "history",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <AccountHistory />
+          </Suspense>
+        ),
+      },
+    ],
   },
 ]);
 
