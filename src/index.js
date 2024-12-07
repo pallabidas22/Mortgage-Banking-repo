@@ -4,13 +4,13 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Spin } from "antd";
 import "./index.css";
-import AccountHistory from "./features/history/account/AccountHistory";
 import { AuthProvider } from "./contexts/authContext";
 
 import "./index.css";
 import AccountHistoryLayout from "./features/history/account/AccountHistoryLayout";
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const Login = lazy(() => import("./features/login/signIn"));
+const TransferHistory = lazy(() => import("./features/history/transfer/TransferHistory"));
 
 const Loading = () => <Spin size="default" fullscreen />;
 const root = ReactDOM.createRoot(document.getElementById("root"));

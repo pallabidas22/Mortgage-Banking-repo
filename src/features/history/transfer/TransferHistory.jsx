@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Modal, Spin, Table } from 'antd';
-import { API } from "../constants/api";
-import useFetch from "../hooks/useFetch";
-import { columns } from '../features/history/transfer/columns';
+import { API } from "../../../constants/api";
+import useFetch from "../../../hooks/useFetch";
+import { columns } from './columns';
 import { Layout } from 'antd';
 const { Content } = Layout;
 

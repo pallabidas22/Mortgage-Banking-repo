@@ -2,7 +2,7 @@ import { render, screen, act, fireEvent } from '@testing-library/react';
 import TransferHistory from './TransferHistory';
 import { server } from '../../tests/server';
 import { http, HttpResponse } from 'msw';
-import { API, HOST } from '../constants/api';
+import { API, HOST } from '../../../constants/api';
 
 describe('Transfer History', () => {
   test('renders loading', () => {
