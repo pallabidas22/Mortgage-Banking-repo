@@ -63,7 +63,7 @@ const TransferForm = ({
         if (response?.data) {
           message.success("Transfer successful!");
           resetForm();
-          navigate("/success-transfer");
+          // navigate("/success-transfer");
         } else {
           message.error("Transfer failed. Please try again.");
         }
