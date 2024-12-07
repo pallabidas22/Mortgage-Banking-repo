@@ -7,6 +7,8 @@ import "./index.css";
 import AccountHistoryLayout from "./features/history/account/AccountHistoryLayout";
 import { AuthProvider } from "./contexts/authContext";
 import AccountSummaryLayout from "./features/accounts/AccountSummaryLayout";
+import TransferForm from "./features/transfer/TransferForm";
+import SuccessTransfer from "./features/transfer/SuccessTransfer";
 const AccountList = lazy(() =>
   import("./features/accounts/AccountList/AccountList")
 );
