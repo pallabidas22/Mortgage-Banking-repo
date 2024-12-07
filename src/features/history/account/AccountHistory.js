@@ -1,7 +1,20 @@
-import LandingPage from "../../../pages/LandingPage";
+import { Outlet } from "react-router-dom";
+
+import { PageHeader } from "../../../ui/PageHeader";
 
 const AccountHistory = () => {
-  return <h1>Account History</h1>;
+  return (
+    <div>
+      {/* Page header for navigation and title */}
+      <PageHeader />
+
+      {/* Main content area */}
+      <main>
+        {/* Renders nested routes */}
+        <Outlet />
+      </main>
+    </div>
+  );
 };
 
-export default LandingPage(AccountHistory);
+export default AccountHistory;

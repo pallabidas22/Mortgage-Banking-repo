@@ -1,32 +1,51 @@
 import { useState, useEffect } from 'react';
-import { Button, Table } from 'antd';
+import { Spin, Table } from 'antd';
 import { API } from "../constants/api";
 import useFetch from "../hooks/useFetch";
 import { columns } from '../features/history/transfer/columns';
+import { Layout } from 'antd';
+const { Content } = Layout;
 
 const TransferHistory = () => {
-  const [req, setReq] = useState(1);
-  const { loading, data, error } = useFetch(API.TRANSFER_HISTORY, req);
+  const [request, setRequest] = useState(1);
+  const { loading, data, error } = useFetch(API.TRANSFER_HISTORY, request);
   const [displayData, setDisplayData] = useState([]);
 
   useEffect(() => {
     if (data?.length) {
-      setDisplayData([...displayData, ...data])
+      if (request === 1) {
+        setDisplayData(data);
+      }
+      else {
+        setDisplayData([...displayData, ...data]);
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  console.log({ loading, data, error , displayData})
-  const handleLoadMore = () => {
-    setReq(req + 1);
+
+  const handleScroll = (el) => {
+    const { scrollTop, scrollHeight, clientHeight } = el.target;
+    const isScrolled = scrollHeight - scrollTop - 0.5 === clientHeight;
+    if (isScrolled) {
+      setRequest(request + 1);
+    }
   }
 
   if (error) throw new Error(error);
+  if (loading && request === 1) return <Spin size="default" fullscreen data-testid="loading" />;
 
   return (
-    <div>
-      <Table columns={columns} dataSource={displayData} loading={loading || !displayData.length} pagination={false} />
-      <Button onClick={handleLoadMore} disabled={loading}>Load more</Button>
-    </div>
+    <>
+      <Content
+        style={{ minHeight: '80vh', maxHeight: '80vh', overflowY: 'auto' }}
+        // ref={container}
+        data-testid="transfer-history"
+        onScroll={handleScroll}
+      >
+        <Table columns={columns} dataSource={displayData} loading={loading || !displayData.length} pagination={false} sticky />
+      </Content>
+    </>
   )
 }
 
