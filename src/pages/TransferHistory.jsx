@@ -28,6 +28,7 @@ const TransferHistory = () => {
       Modal.error({
         title: 'Something went wrong',
         content: 'Please try again',
+        "data-testid": 'error-modal',
       });
     }
   }, [error])
@@ -47,7 +48,6 @@ const TransferHistory = () => {
     <>
       <Content
         style={{ minHeight: '80vh', maxHeight: '80vh', overflowY: 'auto' }}
-        // ref={container}
         data-testid="transfer-history"
         onScroll={handleScroll}
       >
