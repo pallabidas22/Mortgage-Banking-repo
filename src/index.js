@@ -6,10 +6,14 @@ import { Spin } from "antd";
 import "./index.css";
 import AccountHistoryLayout from "./features/history/account/AccountHistoryLayout";
 import { AuthProvider } from "./contexts/authContext";
+import AccountSummaryLayout from "./features/accounts/AccountSummaryLayout";
+const AccountList = lazy(() =>
+  import("./features/accounts/AccountList/AccountList")
+);
+const AccountDetail = lazy(() =>
+  import("./features/accounts/AccountDetail/AccountDetail")
+);
 
-import "./index.css";
-import TransferForm from "./features/transfer/TransferForm";
-import SuccessTransfer from "./features/transfer/SuccessTransfer";
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const Login = lazy(() => import("./features/login/signIn"));
 const TransferHistory = lazy(() =>
@@ -37,6 +41,14 @@ const appRouter = createBrowserRouter([
     ),
   },
   {
+    path: "/accounts/:accountNumber",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <AccountDetail /> {/* AccountDetail Component : */}
+      </Suspense>
+    ),
+  },
+  {
     path: "/accounts",
     element: (
       <Suspense fallback={<Loading />}>
@@ -49,6 +61,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <AccountHistoryLayout />
+          </Suspense>
+        ),
+      },
+      {
+        path: "summary",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <AccountSummaryLayout />
           </Suspense>
         ),
       },

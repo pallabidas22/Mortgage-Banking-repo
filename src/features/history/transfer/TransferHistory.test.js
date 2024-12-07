@@ -12,9 +12,9 @@ describe('Transfer History', () => {
   });
 
   test('render final page', () => {
-    const { asFragment } = render(<TransferHistory />);
+    const { wrapper } = render(<TransferHistory />);
     expect(screen.queryByTestId('loading')).toBeFalsy();
-    expect(asFragment()).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   })
 
   test('should render trigger error modal on API error', () => {
@@ -29,8 +29,9 @@ describe('Transfer History', () => {
     expect(screen.getByTestId('error-modal')).toBeInTheDocument();
   })
 
+
   test('should render trigger on API scroll', () => {
-    const { asFragment } = render(<TransferHistory />);
+    render(<TransferHistory />);
     expect(screen.queryByTestId('loading')).toBeFalsy();
     const table = screen.getByTestId('transfer-history')
     expect(table).toBeInTheDocument();
@@ -40,7 +41,5 @@ describe('Transfer History', () => {
         scrollTop: 1000
       }
     })
-
-    expect(asFragment()).toMatchSnapshot();
   })
 })

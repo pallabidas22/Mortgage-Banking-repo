@@ -1,0 +1,63 @@
+.account-detail-container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.center-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.back-button {
+    margin-bottom: 24px;
+    padding: 0;
+}
+
+.account-detail-card {
+    background: #fff;
+    border-radius: 8px;
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.account-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.account-title .anticon {
+    font-size: 32px;
+    color: #1890ff;
+}
+
+.account-title h2 {
+    margin: 0 !important;
+}
+
+.balance-statistic {
+    text-align: right;
+}
+
+.balance-statistic .ant-statistic-content {
+    font-size: 32px;
+    color: #52c41a;
+}
+
+.transactions-section {
+    margin-top: 24px;
+}
+
+.account-detail-actions {
+    display: flex;
+    gap: 16px;
+}

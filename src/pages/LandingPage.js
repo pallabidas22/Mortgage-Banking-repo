@@ -16,7 +16,7 @@ const LandingPage = () => {
           navigate("profile");
           break;
         case "AccountSummary":
-          navigate("/accounts");
+          navigate("/accounts/summary");
           break;
         case "AccountHistory":
           navigate("/accounts/history");
@@ -26,9 +26,6 @@ const LandingPage = () => {
           break;
         case "TransferHistory":
           navigate("/transfer/history");
-          break;
-        case "TransferSuccess":
-          navigate("/success-transfer");
           break;
         case "Logout":
           //   LOGOUT
