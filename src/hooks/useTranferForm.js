@@ -16,8 +16,13 @@ export const useTranferForm = (initialState) => {
     });
   };
 
+  const resetForm = () => {
+    setFormData(initialState);
+  };
+
   return {
     formData,
+    resetForm,
     handleChange,
   };
 };

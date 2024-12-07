@@ -11,9 +11,11 @@ import TextArea from "antd/es/input/TextArea";
 import "../../styles/TransferForm.css";
 import { useTranferForm } from "../../hooks/useTranferForm";
 import { initialTransferForm, LIMITS } from "../../utils/utils";
+import { handleFormValidation } from "../../utils/validations";
 
-const TransferForm = ({ savingAccountNum = "0", mortgageAccountNum = "0" }) => {
-  const { formData, handleChange } = useTranferForm(initialTransferForm);
+const TransferForm = ({ savingAccountNum, mortgageAccountNum }) => {
+  const { formData, handleChange, resetForm } =
+    useTranferForm(initialTransferForm);
   formData.fromSavingsAccountNumber = savingAccountNum;
   formData.toMortgageAccountNumber = mortgageAccountNum;
 
@@ -26,32 +28,22 @@ const TransferForm = ({ savingAccountNum = "0", mortgageAccountNum = "0" }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    handleFormValidation();
-
-    console.log(formData);
-  };
-
-  const handleFormValidation = () => {
-    if (formData.fromSavingsAccountNumber.length !== 10) {
-      alert("Invalid Savings Account Number");
-      return;
-    }
-    if (formData.toMortgageAccountNumber !== 10) {
-      alert("Invalid Mortgage Account Number");
-      return;
-    }
-    if (formData.mortgageAmount <= 0) {
-      alert("Amount must be greater than 0");
-      return;
-    }
-
-    if (formData.remarks.length === 0) {
-      alert("Remarks cannot exceed 100 characters");
-      return;
+    const msg = handleFormValidation(formData);
+    if (msg) {
+      alert(msg);
+    } else {
+      alert("Validation success");
+      resetForm();
     }
   };
 
-  const onReset = () => {};
+  /**
+   * @function onReset
+   * This func can do reset the form
+   */
+  const onReset = () => {
+    resetForm();
+  };
 
   return (
     <div className="form-container ">
@@ -63,7 +55,7 @@ const TransferForm = ({ savingAccountNum = "0", mortgageAccountNum = "0" }) => {
         <Form.Item label="Saving Account Number">
           <Input
             name="savingAccountNumber"
-            value={formData.fromSavingsAccountNumber}
+            value={formData?.fromSavingsAccountNumber}
             disabled
           />
         </Form.Item>
@@ -71,7 +63,7 @@ const TransferForm = ({ savingAccountNum = "0", mortgageAccountNum = "0" }) => {
         <Form.Item label="Mortgage Account Number">
           <Input
             name="Mortgage Account Number"
-            value={formData.toMortgageAccountNumber}
+            value={formData?.toMortgageAccountNumber}
             disabled
           />
         </Form.Item>
@@ -80,7 +72,7 @@ const TransferForm = ({ savingAccountNum = "0", mortgageAccountNum = "0" }) => {
           <Input
             name="mortgageAmount"
             placeholder="Enter Amount"
-            value={formData.mortgageAmount}
+            value={formData?.mortgageAmount?.Input}
             onChange={handleChange}
             type="number"
           />
@@ -89,7 +81,7 @@ const TransferForm = ({ savingAccountNum = "0", mortgageAccountNum = "0" }) => {
         <Form.Item label="Remarks">
           <TextArea
             name="remarks"
-            value={formData.remarks}
+            value={formData?.remarks}
             placeholder="Enter Remarks"
             onChange={handleChange}
             maxLength={LIMITS.REMARKS_LIMIT}
