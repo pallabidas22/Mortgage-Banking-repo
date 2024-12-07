@@ -189,5 +189,127 @@
             "accountName": "John Doe"
         }
     }
-]
+],
+
+  "customers": [
+    {
+      "id": "cd8b",
+      "customerId": "1234",
+      "password": "Test@12"
+    },
+    {
+      "id": "2326",
+      "customerId": "1234",
+      "password": "Test@12"
+    },
+    {
+      "id": "16ba",
+      "customerId": "1234",
+      "password": "Test@12"
+    },
+    {
+      "id": "e183",
+      "customerId": "1234",
+      "password": "Just@12"
+    },
+    {
+      "id": "6eee",
+      "customerId": "1234",
+      "password": "Test@12"
+    },
+    {
+      "id": "ef59",
+      "customerId": "1234",
+      "password": "Test@12"
+    },
+    {
+      "id": "34e7",
+      "customerId": "1234",
+      "password": "Test@12"
+    },
+    {
+      "id": "0b1e",
+      "customerId": "589",
+      "password": "Test@12"
+    },
+    {
+      "id": "1e07",
+      "customerId": "589",
+      "password": "Test@12"
+    },
+    {
+      "id": "666e",
+      "customerId": "234",
+      "password": "Test%56"
+    },
+    {
+      "id": "33d5",
+      "customerId": "234",
+      "password": "Test%12"
+    },
+    {
+      "id": "c874",
+      "customerId": "1234",
+      "password": "TEst@123"
+    },
+    {
+      "id": "8c52",
+      "customerId": "12",
+      "password": "Test@23"
+    },
+    {
+      "id": "6ba3",
+      "customerId": "12",
+      "password": "Test@23"
+    },
+    {
+      "id": "2205",
+      "customerId": "12",
+      "password": "Test@23"
+    },
+    {
+      "id": "3734",
+      "customerId": "12",
+      "password": "Test%12"
+    },
+    {
+      "id": "3687",
+      "customerId": "12",
+      "password": "Test%12"
+    },
+    {
+      "id": "4b24",
+      "customerId": "12",
+      "password": "Test%12"
+    },
+    {
+      "id": "b424",
+      "customerId": "1234",
+      "password": "Test%12"
+    },
+    {
+      "id": "df27",
+      "customerId": "1234",
+      "password": "Test%12"
+    },
+    {
+      "id": "2871",
+      "customerId": "1234",
+      "password": "Test%12"
+    }
+  ],
+  "customersIdData": [
+    {
+      "customerId": 1234
+    },
+    {
+      "customerId": 456
+    },
+    {
+      "customerId": 678
+    },
+    {
+      "customerId": 8910
+    }
+  ]
 }
