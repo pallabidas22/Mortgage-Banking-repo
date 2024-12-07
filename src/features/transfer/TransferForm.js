@@ -5,15 +5,21 @@
  *
  */
 import React from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 import "../../styles/TransferForm.css";
 import { useTranferForm } from "../../hooks/useTranferForm";
 import { initialTransferForm, LIMITS } from "../../utils/utils";
 import { handleFormValidation } from "../../utils/validations";
+import { PageHeader } from "../../ui/PageHeader";
+import axios from "axios";
 
-const TransferForm = ({ savingAccountNum, mortgageAccountNum }) => {
+const TransferForm = ({
+  savingAccountNum = "1234567890",
+  mortgageAccountNum = "0987654321",
+  savingsAmount = 1000000,
+}) => {
   const { formData, handleChange, resetForm } =
     useTranferForm(initialTransferForm);
   formData.fromSavingsAccountNumber = savingAccountNum;
@@ -25,15 +31,45 @@ const TransferForm = ({ savingAccountNum, mortgageAccountNum }) => {
    *
    * calling while submitting the form
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const msg = handleFormValidation(formData);
     if (msg) {
-      alert(msg);
+      message.error(msg);
     } else {
-      alert("Validation success");
-      resetForm();
+      console.log("Validation success");
+      console.log(formData);
+
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/transfer-history",
+          {
+            transactionDate: new Date().toISOString(),
+            amount: formData?.mortgageAmount,
+            remainingBalance: savingsAmount - formData?.mortgageAmount,
+            mortgageAccount: {
+              accountNumber: formData?.toMortgageAccountNumber,
+              accountType: "MORTGAGE",
+              accountName: "Housing",
+            },
+            savingsAccount: {
+              accountNumber: formData?.fromSavingsAccountNumber,
+              accountType: "SAVINGS",
+              accountName: "Surendra",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Transfer failed. Please try again.");
+        }
+
+        message.success("Transfer successful!");
+        resetForm();
+      } catch (error) {
+        message.error("Transfer failed. Please try again.");
+      }
     }
   };
 
@@ -47,6 +83,7 @@ const TransferForm = ({ savingAccountNum, mortgageAccountNum }) => {
 
   return (
     <div className="form-container ">
+      {/* <PageHeader /> */}
       <Form
         layout="vertical"
         className="transfer-form"

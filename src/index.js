@@ -7,6 +7,7 @@ import "./index.css";
 import AccountHistory from "./features/history/account/AccountHistory";
 
 import "./index.css";
+import TransferForm from "./features/transfer/TransferForm";
 const TransferHistory = lazy(() => import("./pages/TransferHistory"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 
@@ -61,6 +62,14 @@ const appRouter = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/transfer",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <TransferForm />
+      </Suspense>
+    ),
   },
 ]);
 
