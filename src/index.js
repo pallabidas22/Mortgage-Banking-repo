@@ -6,6 +6,8 @@ import { Spin } from "antd";
 import "./index.css";
 import AccountHistory from "./features/history/account/AccountHistory";
 
+import "./index.css";
+const TransferHistory = lazy(() => import("./pages/TransferHistory"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 
 const Loading = () => <Spin size="default" fullscreen />;
@@ -13,7 +15,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const appRouter = createBrowserRouter([
   {
-    path: "/",
+    path: "/login",
     element: (
       <Suspense fallback={<Loading />}>
         <LandingPage /> {/* SignIn Component : */}
@@ -21,7 +23,15 @@ const appRouter = createBrowserRouter([
     ),
   },
   {
-    path: "/login",
+    path: "/transfer-history",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <TransferHistory />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/",
     element: (
       <Suspense fallback={<Loading />}>
         <LandingPage /> {/* SignIn Component : */}

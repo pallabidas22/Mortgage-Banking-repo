@@ -2,13 +2,6 @@
   "users": [
     {
       "id": 1,
-      "username": "",
-      "customerId": ""
-    }
-  ],
-  "accounts": [
-    {
-      "id": 1,
       "accountNumber": "1234567890",
       "type": "Savings",
       "customerId": "CUST001",
