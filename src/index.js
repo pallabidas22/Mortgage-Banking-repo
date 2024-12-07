@@ -12,7 +12,9 @@ const AccountDetail = lazy(() => import("./features/accounts/AccountDetail/Accou
 
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const Login = lazy(() => import("./features/login/signIn"));
-const TransferHistory = lazy(() => import("./features/history/transfer/TransferHistory"));
+const TransferHistory = lazy(() =>
+  import("./features/history/transfer/TransferHistory")
+);
 
 const Loading = () => <Spin size="default" fullscreen />;
 const root = ReactDOM.createRoot(document.getElementById("root"));
