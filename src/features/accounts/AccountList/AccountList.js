@@ -38,8 +38,8 @@ const AccountList = () => {
         }
     };
 
-    const filteredAccounts = accounts?.data?.filter(account => 
-        accountTypeFilter === 'all' || account.accountType === accountTypeFilter
+    const filteredAccounts = accounts?.filter(account => 
+        accountTypeFilter === 'all' || account.type === accountTypeFilter
     );
 
     if (loading) return <Spin size="large" className="center-spinner" />;
@@ -49,16 +49,18 @@ const AccountList = () => {
         <div className="account-list-container">
             <div className="account-list-header">
                 <Title level={2}>My Accounts</Title>
-                <Select
-                    defaultValue="all"
-                    style={{ width: 200 }}
-                    onChange={setAccountTypeFilter}
-                    value={accountTypeFilter}
+                <div className="account-filter">
+                    <Select
+                        defaultValue="all"
+                        style={{ width: 200 }}
+                        onChange={setAccountTypeFilter}
+                        value={accountTypeFilter}
                 >
-                    <Option value="all">All Accounts</Option>
+                    <Option value="all">All</Option>
                     <Option value="Savings">Savings</Option>
-                    <Option value="Mortgage">Mortgage</Option>
-                </Select>
+                        <Option value="Mortgage">Mortgage</Option>
+                    </Select>
+                </div>
             </div>
 
             <Row gutter={[16, 16]}>
@@ -70,8 +72,8 @@ const AccountList = () => {
                             onClick={() => navigate(`/accounts/${account.accountNumber}`)}
                         >
                             <div className="account-card-header">
-                                {getAccountIcon(account.accountType)}
-                                <span className="account-type">{account.accountType}</span>
+                                <span className='account-icon'>{getAccountIcon(account.type)}</span>
+                                <span className="account-number">{account.accountNumber}</span>
                             </div>
                             <Statistic
                                 title="Balance"
@@ -79,8 +81,8 @@ const AccountList = () => {
                                 precision={2}
                                 prefix="$"
                             />
-                            <div className="account-number">
-                                {account.accountNumber}
+                            <div className="account-type">
+                                {account.type}
                             </div>
                         </Card>
                     </Col>

@@ -57,15 +57,7 @@
     margin-top: 24px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 576px) {
-    .account-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .balance-statistic {
-        text-align: left;
-        width: 100%;
-    }
+.account-detail-actions {
+    display: flex;
+    gap: 16px;
 }

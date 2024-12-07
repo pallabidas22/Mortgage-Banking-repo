@@ -1,3 +1,7 @@
+.account-list-container {
+    padding: 30px;
+}
+
 .account-summary-item {
     display: flex;
     flex-direction: column;
@@ -12,4 +16,8 @@
 .account-filter select {
     padding: 0.5rem;
     border-radius: 4px;
+}
+
+.account-card-header .account-icon {
+    margin-right: 10px;
 }

@@ -43,7 +43,7 @@ const AccountDetail = () => {
         console.log("=====", accountResponse);
     }, [accountResponse]);
 
-    const account = accountResponse?.data?.filter(account => account.accountNumber === accountNumber)[0];
+    const account = accountResponse?.filter(account => account.accountNumber === accountNumber)[0];  //TODO: load account from context instead of calling api
 
     const getAccountIcon = (accountType) => {
         switch (accountType) {
@@ -94,7 +94,7 @@ const AccountDetail = () => {
                             {account?.accountNumber}
                         </Descriptions.Item>
                         <Descriptions.Item label="Account Type">
-                            {account?.accountType}
+                            {account?.type}
                         </Descriptions.Item>
                         <Descriptions.Item label="Status">
                             {account?.status}
@@ -104,7 +104,7 @@ const AccountDetail = () => {
                         </Descriptions.Item>
                     </Descriptions>
 
-                    <div>
+                    <div className='account-detail-actions'>
                         <Button type="primary">Make a Transaction</Button>
                         <Button>Transaction History</Button>
                     </div>

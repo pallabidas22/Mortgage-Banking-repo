@@ -2,19 +2,11 @@
   "users": [
     {
       "id": 1,
-      "username": "",
-      "customerId": ""
-    }
-  ],
-  "accounts": [
-    {
-      "id": 1,
       "accountNumber": "1234567890",
       "type": "Savings",
       "customerId": "CUST001",
       "customerName": "name",
       "balance": 5000,
-      "status": "Active",
       "lastTransactionDate": "2024-12-01T12:00:00Z"
     },
     {
@@ -24,7 +16,6 @@
       "customerId": "CUST001",
       "customerName": "name",
       "balance": 500000,
-      "status": "Active",
       "lastTransactionDate": "2024-12-01T12:00:00Z"
     }
   ],
