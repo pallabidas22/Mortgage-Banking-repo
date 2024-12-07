@@ -24,14 +24,11 @@ const LandingPage = () => {
         case "AccountHistory":
           navigate("/accounts/history");
           break;
-        case "Transfer":
-          navigate("/transfer");
+        case "MortgageTransfer":
+          navigate("/mortgage-transfer");
           break;
         case "TransferHistory":
           navigate("/transfer/history");
-          break;
-        case "MortgageTransfer":
-          navigate("/mortgage-transfer");
           break;
         case "TransferSuccess":
           navigate("/success-transfer");
@@ -61,7 +58,7 @@ const LandingPage = () => {
       label: "Account History",
     },
     {
-      key: "Transfer",
+      key: "MortgageTransfer",
       icon: <ProfileOutlined />,
       label: "Fund Transfer",
     },
@@ -69,16 +66,6 @@ const LandingPage = () => {
       key: "TransferHistory",
       icon: <ProfileOutlined />,
       label: "Transfer History",
-    },
-    {
-      key: "MortgageTransfer",
-      icon: <ProfileOutlined />,
-      label: "Mortgage Fund Transfer",
-    },
-    {
-      key: "TransferSuccess",
-      icon: <ProfileOutlined />,
-      label: "Transfer Success",
     },
     {
       key: "Logout",
