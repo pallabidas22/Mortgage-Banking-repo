@@ -2,9 +2,57 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### Installation React App
+
+1. Clone the repository
+    ```sh
+    git clone https://github.com/pimohan/foodiedelight.git
+    cd foodiedelight
+    ```
+2. Install dependencies
+    ```sh
+    npm install
+    # or
+    yarn install
+    ```
+
+3. Start the development server
+    ```sh
+    npm start
+    # or
+    yarn start
+    ```
+The application should now be running at `http://localhost:3000`
+-----------------
+### Installation Mock Faker App
+
+1. Clone the repository
+    ```sh
+    git clone https://github.com/pimohan/foodiedelight.git
+    cd foodiedelight
+    cd faker
+    
+    # or
+    cd foodiedelight\faker
+
+    ```
+2. Install dependencies
+    ```sh
+    npm install
+    # or
+    yarn install
+    ```
+
+3. Start the development mock server
+    ```sh
+    npm start
+    # or
+    yarn start
 
 ### `npm start`
 
