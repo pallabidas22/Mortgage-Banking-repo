@@ -16,13 +16,13 @@ const LandingPage = () => {
           navigate("profile");
           break;
         case "AccountSummary":
-          navigate("/accounts");
+          navigate("/accounts/summary");
           break;
         case "AccountHistory":
           navigate("/accounts/history");
           break;
         case "Transfer":
-          navigate("/transfer");
+          navigate("/transfer/");
           break;
         case "TransferHistory":
           navigate("/transfer/history");

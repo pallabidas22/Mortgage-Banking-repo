@@ -48,7 +48,7 @@ const appRouter = createBrowserRouter([
     path: "/accounts",
     element: (
       <Suspense fallback={<Loading />}>
-        <AccountList />
+        <LandingPage />
       </Suspense>
     ),
     children: [
