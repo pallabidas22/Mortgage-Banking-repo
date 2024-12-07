@@ -30,5 +30,25 @@
       "name": "Mortgage",
       "description": "Mortgage Account"
     }
-  ]
+  ],
+  "accounts": {
+    "status": "SUCCESS",
+    "error": null,
+    "data": [
+      {
+          "accountNumber": "8374027819",
+          "accountType": "Savings",
+          "balance": 5000,
+          "status": "Active",
+          "lastTransactionDate": "2024-11-23T08:06:45Z"
+      },
+      {
+          "accountNumber": "3454564765",
+          "accountType": "Mortgage",
+          "balance": 100000,
+          "status": "Active",
+          "lastTransactionDate": "2024-10-29T10:07:36Z"
+      }
+    ]
+  }
 }
