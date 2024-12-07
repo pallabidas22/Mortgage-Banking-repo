@@ -4,10 +4,12 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Spin } from "antd";
 import "./index.css";
+import AccountHistoryLayout from "./features/history/account/AccountHistoryLayout";
 import { AuthProvider } from "./contexts/authContext";
 
 import "./index.css";
-import AccountHistoryLayout from "./features/history/account/AccountHistoryLayout";
+import TransferForm from "./features/transfer/TransferForm";
+import SuccessTransfer from "./features/transfer/SuccessTransfer";
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const Login = lazy(() => import("./features/login/signIn"));
 const TransferHistory = lazy(() => import("./features/history/transfer/TransferHistory"));
@@ -67,6 +69,22 @@ const appRouter = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/mortgage-transfer",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <TransferForm />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/success-transfer",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <SuccessTransfer />
+      </Suspense>
+    ),
   },
 ]);
 
