@@ -122,7 +122,7 @@ const LandingPage = () => {
                   style={{ color: colorTextHeading }}
                   data-testid="header-title"
                 >
-                  UOB Baning - <span>Mortgate</span>
+                  UOB Baning - <span>Mortgage</span>
                 </h1>
               </Flex>
               {/* USER */}
@@ -145,7 +145,7 @@ const LandingPage = () => {
             </div>
           </Content>
           <Footer className="copy-right" data-testid="footer">
-            UOB Banking - Mortgate ©{new Date().getFullYear()} Created by UI
+            UOB Banking - Mortgage ©{new Date().getFullYear()} Created by UI
             Squad 3
           </Footer>
         </Layout>

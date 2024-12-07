@@ -24,14 +24,6 @@ const appRouter = createBrowserRouter([
     ),
   },
   {
-    path: "/transfer-history",
-    element: (
-      <Suspense fallback={<Loading />}>
-        <TransferHistory />
-      </Suspense>
-    ),
-  },
-  {
     path: "/",
     element: (
       <Suspense fallback={<Loading />}>
@@ -58,6 +50,24 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <AccountHistory />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/transfer",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <LandingPage />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: "history",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <TransferHistory />
           </Suspense>
         ),
       },
