@@ -14,12 +14,14 @@ import { initialTransferForm, LIMITS } from "../../utils/utils";
 import { handleFormValidation } from "../../utils/validations";
 import { PageHeader } from "../../ui/PageHeader";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const TransferForm = ({
   savingAccountNum = "1234567890",
   mortgageAccountNum = "0987654321",
   savingsAmount = 1000000,
 }) => {
+  const navigate = useNavigate();
   const { formData, handleChange, resetForm } =
     useTranferForm(initialTransferForm);
   formData.fromSavingsAccountNumber = savingAccountNum;
@@ -38,35 +40,33 @@ const TransferForm = ({
     if (msg) {
       message.error(msg);
     } else {
-      console.log("Validation success");
-      console.log(formData);
+      // console.log("Validation success");
+      // console.log(formData);
 
       try {
-        const response = await axios.post(
-          "http://localhost:3000/transfer-history",
-          {
-            transactionDate: new Date().toISOString(),
-            amount: formData?.mortgageAmount,
-            remainingBalance: savingsAmount - formData?.mortgageAmount,
-            mortgageAccount: {
-              accountNumber: formData?.toMortgageAccountNumber,
-              accountType: "MORTGAGE",
-              accountName: "Housing",
-            },
-            savingsAccount: {
-              accountNumber: formData?.fromSavingsAccountNumber,
-              accountType: "SAVINGS",
-              accountName: "Surendra",
-            },
-          }
-        );
+        const response = await axios.post("http://localhost:5001/transfers", {
+          transactionDate: new Date().toISOString(),
+          amount: formData?.mortgageAmount,
+          remainingBalance: savingsAmount - formData?.mortgageAmount,
+          mortgageAccount: {
+            accountNumber: formData?.toMortgageAccountNumber,
+            accountType: "MORTGAGE",
+            accountName: "Housing",
+          },
+          savingsAccount: {
+            accountNumber: formData?.fromSavingsAccountNumber,
+            accountType: "SAVINGS",
+            accountName: "Surendra",
+          },
+        });
 
-        if (!response.ok) {
-          throw new Error("Transfer failed. Please try again.");
+        if (response?.data) {
+          message.success("Transfer successful!");
+          resetForm();
+          navigate("/success-transfer");
+        } else {
+          message.error("Transfer failed. Please try again.");
         }
-
-        message.success("Transfer successful!");
-        resetForm();
       } catch (error) {
         message.error("Transfer failed. Please try again.");
       }
@@ -109,7 +109,7 @@ const TransferForm = ({
           <Input
             name="mortgageAmount"
             placeholder="Enter Amount"
-            value={formData?.mortgageAmount?.Input}
+            value={formData?.mortgageAmount}
             onChange={handleChange}
             type="number"
           />

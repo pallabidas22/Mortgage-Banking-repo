@@ -1,12 +1,17 @@
 import { render, screen, userEvent } from "@testing-library/react";
 import TransferForm from "./TransferForm";
 
+import axios from "axios";
+
+jest.mock("axios");
+
 describe("TransferForm", () => {
   it("renders input fields and submit button", () => {
     render(
       <TransferForm
         savingAccountNum="1234567890"
         mortgageAccountNum="9876543210"
+        savingsAmount="1000000"
       />
     );
 
@@ -34,6 +39,7 @@ describe("TransferForm", () => {
       <TransferForm
         savingAccountNum="1234567890"
         mortgageAccountNum="9876543210"
+        savingsAmount="1000000"
       />
     );
 
@@ -51,6 +57,7 @@ describe("TransferForm", () => {
       <TransferForm
         savingAccountNum="1234567890"
         mortgageAccountNum="9876543210"
+        savingsAmount="1000000"
       />
     );
 
@@ -69,6 +76,7 @@ describe("TransferForm", () => {
       <TransferForm
         savingAccountNum="1234567890"
         mortgageAccountNum="9876543210"
+        savingsAmount="1000000"
       />
     );
 
@@ -108,5 +116,45 @@ describe("TransferForm", () => {
       amount: "100",
       remarks: "Test Remarks",
     });
+  });
+
+  it("handles form submission", async () => {
+    const mockAxiosPost = jest.fn().mockResolvedValue({}); // Mock successful axios post
+
+    render(
+      <TransferForm
+        savingAccountNum="1234567890"
+        mortgageAccountNum="9876543210"
+        savingsAmount="1000000"
+      />
+    );
+
+    const mortgageAmountInput = screen.getByLabelText("Mortgage Amount");
+    const remarksInput = screen.getByLabelText("Remarks");
+    const submitButton = screen.getByRole("button", { name: /Submit/i });
+
+    userEvent.type(mortgageAmountInput, "100");
+    userEvent.type(remarksInput, "Test Remarks");
+
+    userEvent.click(submitButton);
+
+    await expect(mockAxiosPost).toHaveBeenCalledWith(
+      "http://localhost:5001/transfers",
+      {
+        transactionDate: new Date().toISOString(),
+        amount: "100",
+        remainingBalance: 1000000 - 100,
+        mortgageAccount: {
+          accountNumber: "9876543210",
+          accountType: "MORTGAGE",
+          accountName: "Housing",
+        },
+        savingsAccount: {
+          accountNumber: "1234567890",
+          accountType: "SAVINGS",
+          accountName: "Surendra",
+        },
+      }
+    );
   });
 });

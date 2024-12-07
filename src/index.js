@@ -8,6 +8,7 @@ import AccountHistory from "./features/history/account/AccountHistory";
 
 import "./index.css";
 import TransferForm from "./features/transfer/TransferForm";
+import SuccessTransfer from "./features/transfer/SuccessTransfer";
 const TransferHistory = lazy(() => import("./pages/TransferHistory"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const Login = lazy(() => import("./features/login/signIn"));
@@ -69,6 +70,14 @@ const appRouter = createBrowserRouter([
     element: (
       <Suspense fallback={<Loading />}>
         <TransferForm />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/success-transfer",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <SuccessTransfer />
       </Suspense>
     ),
   },

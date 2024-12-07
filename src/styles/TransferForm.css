@@ -42,3 +42,20 @@
     margin-left: 10px;
   }
 }
+
+.success-container {
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-text {
+  color: green;
+  font-size: 20px;
+}
+.btn-goback {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
