@@ -9,6 +9,7 @@ import AccountHistory from "./features/history/account/AccountHistory";
 import "./index.css";
 const TransferHistory = lazy(() => import("./pages/TransferHistory"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
+const Login = lazy(() => import("./features/login/signIn"));
 
 const Loading = () => <Spin size="default" fullscreen />;
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -18,7 +19,7 @@ const appRouter = createBrowserRouter([
     path: "/login",
     element: (
       <Suspense fallback={<Loading />}>
-        <LandingPage /> {/* SignIn Component : */}
+        <Login /> {/* SignIn Component : */}
       </Suspense>
     ),
   },
@@ -34,7 +35,7 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: (
       <Suspense fallback={<Loading />}>
-        <LandingPage /> {/* SignIn Component : */}
+        <Login /> {/* SignIn Component : */}
       </Suspense>
     ),
   },
