@@ -4,20 +4,22 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Spin } from "antd";
 import "./index.css";
-import AccountHistory from "./features/history/account/AccountHistory";
+import AccountHistoryLayout from "./features/history/account/AccountHistoryLayout";
+import { AuthProvider } from "./contexts/authContext";
+import AccountSummaryLayout from "./features/accounts/AccountSummaryLayout";
 const AccountList = lazy(() => import("./features/accounts/AccountList/AccountList"));
 const AccountDetail = lazy(() => import("./features/accounts/AccountDetail/AccountDetail"));
 
-const TransferHistory = lazy(() => import("./pages/TransferHistory"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const Login = lazy(() => import("./features/login/signIn"));
+const TransferHistory = lazy(() => import("./features/history/transfer/TransferHistory"));
 
 const Loading = () => <Spin size="default" fullscreen />;
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const appRouter = createBrowserRouter([
   {
-    path: "/login",
+    path: "/",
     element: (
       <Suspense fallback={<Loading />}>
         <Login /> {/* SignIn Component : */}
@@ -25,7 +27,7 @@ const appRouter = createBrowserRouter([
     ),
   },
   {
-    path: "/",
+    path: "/login",
     element: (
       <Suspense fallback={<Loading />}>
         <Login /> {/* SignIn Component : */}
@@ -49,16 +51,18 @@ const appRouter = createBrowserRouter([
     ),
     children: [
       {
-        path: "profile",
-        element: (
-          <Suspense fallback={<Loading />}>{/* UserProfile  */}</Suspense>
-        ),
-      },
-      {
         path: "history",
         element: (
           <Suspense fallback={<Loading />}>
-            <AccountHistory />
+            <AccountHistoryLayout />
+          </Suspense>
+        ),
+      },
+      {
+        path: "summary",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <AccountSummaryLayout />
           </Suspense>
         ),
       },
@@ -86,6 +90,8 @@ const appRouter = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={appRouter} />
+    <AuthProvider>
+      <RouterProvider router={appRouter} />
+    </AuthProvider>
   </React.StrictMode>
 );

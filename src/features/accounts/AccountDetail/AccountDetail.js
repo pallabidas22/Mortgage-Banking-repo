@@ -105,8 +105,8 @@ const AccountDetail = () => {
                     </Descriptions>
 
                     <div className='account-detail-actions'>
-                        <Button type="primary">Make a Transaction</Button>
-                        <Button>Transaction History</Button>
+                        <Button type="primary" onClick={() => navigate('/transfer')}>>Make a Transaction</Button>
+                        <Button onClick={() => navigate('/transfer/history')}>Transaction History</Button>
                     </div>
                 </Space>
             </Card>
