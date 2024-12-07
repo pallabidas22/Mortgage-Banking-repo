@@ -63,6 +63,14 @@ const appRouter = createBrowserRouter([
     ),
     children: [
       {
+        path: "mortgage-transfer",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <TransferForm />
+          </Suspense>
+        ),
+      },
+      {
         path: "history",
         element: (
           <Suspense fallback={<Loading />}>
@@ -72,14 +80,7 @@ const appRouter = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/mortgage-transfer",
-    element: (
-      <Suspense fallback={<Loading />}>
-        <TransferForm />
-      </Suspense>
-    ),
-  },
+
   {
     path: "/success-transfer",
     element: (

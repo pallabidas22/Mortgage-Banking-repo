@@ -22,7 +22,7 @@ const LandingPage = () => {
           navigate("/accounts/history");
           break;
         case "MortgageTransfer":
-          navigate("/mortgage-transfer");
+          navigate("/transfer/mortgage-transfer");
           break;
         case "TransferHistory":
           navigate("/transfer/history");

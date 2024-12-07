@@ -31,7 +31,7 @@ export const useMenuConfig = () => {
       label: "Account History",
     },
     {
-      key: "Transfer",
+      key: "MortgageTransfer",
       icon: <ProfileOutlined />,
       label: "Fund Transfer",
     },
