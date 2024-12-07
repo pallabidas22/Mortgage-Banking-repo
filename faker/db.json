@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "accountNumber": "1234567890",
+      "type": "Savings",
+      "customerId": "CUST001",
+      "customerName": "name",
+      "balance": 5000,
+      "lastTransactionDate": "2024-12-01T12:00:00Z"
+    },
+    {
+      "id": 2,
+      "accountNumber": "1234567891",
+      "type": "Mortgage",
+      "customerId": "CUST001",
+      "customerName": "name",
+      "balance": 500000,
+      "lastTransactionDate": "2024-12-01T12:00:00Z"
+    }
+  ],
+  "accountTypes": [
+    {
+      "id": 1,
+      "name": "Savings",
+      "description": "Savings Account"
+    },
+    {
+      "id": 2,
+      "name": "Mortgage",
+      "description": "Mortgage Account"
+    }
+  ]
+}
