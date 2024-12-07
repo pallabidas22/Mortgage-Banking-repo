@@ -6,9 +6,11 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { PageHeader } from "../../ui/PageHeader";
 import { authPost, validCustomerId } from './authCall';
+import { useAuthContext } from "../../contexts/authContext";
 
 const Login=()=>{
     const navigate = useNavigate();
+    const { setAuthData } = useAuthContext();
     const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto"}
     const btnstyle={margin:'8px 0'}
 
@@ -38,29 +40,28 @@ const Login=()=>{
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate("/accounts");
-        // if(customerId !== "" && password !==""){
-        //     const response = authPost(customerId, password);
-        //     response.then((data)=>{
+        if(customerId !== "" && password !==""){
+            const response = authPost(customerId, password);
+            response.then((data)=>{
                 
-        //         const customerIds = validCustomerId();
-        //         customerIds.then((res) =>{
-        //             navigate("/accounts", { state: { data: data, status: "200"} });
-        //             const validation = res.filter((results) => results.customerId === Number(data.customerId));
-        //             if(validation.length > 1){
-        //                 navigate("/accounts", { state: { data: data, status: "200"} });
-        //                 setSeverity("success");
-        //             }else{
-        //                 setOpen(true);
-        //                 setSeverity("error");
-        //             }
-        //         })
-        //     })
-        // }
-        // else{
-        //     setOpen(true);
-        //     setSeverity("error");
-        // }
+                const customerIds = validCustomerId();
+                customerIds.then((res) =>{
+                    const validation = res.filter((results) => results.customerId === Number(data.customerId));
+                    if(validation.length >= 1){
+                        setAuthData(data);
+                        navigate("/accounts");
+                        setSeverity("success");
+                    }else{
+                        setOpen(true);
+                        setSeverity("error");
+                    }
+                })
+            })
+        }
+        else{
+            setOpen(true);
+            setSeverity("error");
+        }
     };
 
     const handlePassword = (value) =>{

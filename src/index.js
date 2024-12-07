@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Spin } from "antd";
 import "./index.css";
 import AccountHistory from "./features/history/account/AccountHistory";
+import { AuthProvider }  from "./contexts/authContext";
 
 import "./index.css";
 const TransferHistory = lazy(() => import("./pages/TransferHistory"));
@@ -77,6 +78,8 @@ const appRouter = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={appRouter} />
+    <AuthProvider>
+      <RouterProvider router={appRouter} />
+    </AuthProvider>
   </React.StrictMode>
 );
